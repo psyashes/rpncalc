@@ -1,4 +1,6 @@
 use clap::Clap;
+use std::fs::File;
+use std::io::{BufRead, BufReader};
 
 #[derive(Clap, Debug)]
 #[clap(
@@ -18,4 +20,8 @@ struct Opts {
 
 fn main() {
     let opts = Opts::parse();
+
+    if let Some(path) = opts.formula_file {
+        let f = File::open(path).unwrap();
+    }
 }
