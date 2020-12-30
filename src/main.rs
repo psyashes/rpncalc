@@ -87,3 +87,14 @@ fn run<R: BufRead>(reader: R, verbose: bool) {
         println!("{}", answer);
     }
 }
+
+// test
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_ok() {
+        assert_eq!(2 * 2, 4);
+    }
+}
