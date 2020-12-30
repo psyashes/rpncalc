@@ -23,5 +23,13 @@ fn main() {
 
     if let Some(path) = opts.formula_file {
         let f = File::open(path).unwrap();
+        let reader = BufReader::new(f);
+
+        for line in reader.lines() {
+            let line = line.unwrap();
+            println!("{}", line);
+        }
+    } else {
+        println!("No file is specified");
     }
 }
