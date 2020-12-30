@@ -1,1 +1,1 @@
-# Reverse Polish Notation Calculater
+# Reverse Polish Notation Calculator

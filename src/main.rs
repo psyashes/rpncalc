@@ -37,8 +37,8 @@ impl RpnCalculator {
             if let Ok(x) = token.parse::<i32>() {
                 stack.push(x);
             } else {
-                let x = stack.pop().expect("invalid syntax");
                 let y = stack.pop().expect("invalid syntax");
+                let x = stack.pop().expect("invalid syntax");
 
                 let res = match token {
                     "+" => x + y,
@@ -95,6 +95,15 @@ mod tests {
 
     #[test]
     fn test_ok() {
-        assert_eq!(2 * 2, 4);
+        let calc = RpnCalculator::new(false);
+        assert_eq!(calc.eval("5"), 5);
+        assert_eq!(calc.eval("50"), 50);
+        assert_eq!(calc.eval("-50"), -50);
+
+        assert_eq!(calc.eval("2 3 +"), 5);
+        assert_eq!(calc.eval("2 3 *"), 6);
+        assert_eq!(calc.eval("2 3 -"), -1);
+        assert_eq!(calc.eval("2 3 /"), 0);
+        assert_eq!(calc.eval("2 3 %"), 2);
     }
 }
